@@ -1,0 +1,330 @@
+/* Base Navbar Styles */
+.navbar {
+  width: 240px;
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Menu states for mobile */
+.navbar--open {
+  transform: translateX(0);
+}
+
+.navbar--closed {
+  transform: translateX(-100%);
+}
+
+/* Logo */
+.navbar__logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4a3aff;
+  margin-bottom: 40px;
+}
+
+/* Navigation */
+.navbar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Nav Item */
+.navbar__item {
+  font-size: 16px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+/* Active Nav Item */
+.navbar__item--active {
+  background: #f0f0ff;
+  color: #4a3aff;
+  font-weight: 500;
+}
+
+/* Icon */
+.navbar__icon {
+  font-size: 18px;
+}
+
+/* Toggle Button (Hidden on Desktop) */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  color: #4a3aff;
+}
+
+/* Responsive Adjustments */
+
+/* For screens up to 992px */
+@media (max-width: 992px) {
+  .navbar {
+    width: 200px;
+    padding: 20px 15px;
+  }
+
+  .navbar__logo {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .navbar__item {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .navbar__icon {
+    font-size: 16px;
+  }
+}
+
+/* For screens up to 768px (Mobile) */
+@media (max-width: 768px) {
+  .navbar {
+    width: 80%;
+    max-width: 260px;
+    border-radius: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar--closed {
+    display: block; /* Keep in DOM for animation */
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar__logo {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .navbar__nav {
+    gap: 10px;
+  }
+
+  .navbar__item {
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .navbar__icon {
+    font-size: 14px;
+  }
+}
+
+/* For very small screens (up to 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    width: 90%;
+    padding: 15px 10px;
+  }
+
+  .navbar__logo {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .navbar__item {
+    font-size: 12px;
+    padding: 7px 8px;
+  }
+
+  .navbar__icon {
+    font-size: 13px;
+  }
+
+  .navbar-toggle {
+    font-size: 1.3rem;
+    top: 0.8rem;
+    left: 0.8rem;
+  }
+}
+/* Base Navbar Styles */
+.navbar {
+  width: 240px;
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Menu states for mobile */
+.navbar--open {
+  transform: translateX(0);
+}
+
+.navbar--closed {
+  transform: translateX(-100%);
+}
+
+/* Logo */
+.navbar__logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4a3aff;
+  margin-bottom: 40px;
+}
+
+/* Navigation */
+.navbar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Nav Item */
+.navbar__item {
+  font-size: 16px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  touch-action: manipulation;
+}
+
+/* Active Nav Item */
+.navbar__item--active {
+  background: #f0f0ff;
+  color: #4a3aff;
+  font-weight: 500;
+}
+
+/* Icon */
+.navbar__icon {
+  font-size: 18px;
+}
+
+/* Toggle Button */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  color: #4a3aff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .navbar {
+    width: 200px;
+    padding: 20px 15px;
+  }
+
+  .navbar__logo {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .navbar__item {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .navbar__icon {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 80%;
+    max-width: 260px;
+    border-radius: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar--closed {
+    display: block;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar__logo {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .navbar__nav {
+    gap: 10px;
+  }
+
+  .navbar__item {
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .navbar__icon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: 90%;
+    padding: 15px 10px;
+  }
+
+  .navbar__logo {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .navbar__item {
+    font-size: 12px;
+    padding: 7px 8px;
+  }
+
+  .navbar__icon {
+    font-size: 13px;
+  }
+
+  .navbar-toggle {
+    font-size: 1.3rem;
+    top: 0.8rem;
+    left: 0.8rem;
+  }
+}

@@ -1,0 +1,40 @@
+/* Overall App Container */
+.app {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f6f8; /* Consistent with BrandDashboard */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
+
+/* Main Content with Sidebar */
+.main-content {
+  flex: 1;
+  margin-left: 240px; /* Match Navbar width */
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Main Content without Sidebar */
+.main-content-full {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Ensure content doesn't overlap with toggle button on mobile */
+@media (max-width: 768px) {
+  .main-content,
+  .main-content-full {
+    margin-left: 0;
+    padding: 1rem;
+    padding-top: 3.5rem; /* Space for Navbar toggle button */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content,
+  .main-content-full {
+    padding: 0.5rem;
+    padding-top: 3rem;
+  }
+}
