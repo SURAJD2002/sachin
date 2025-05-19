@@ -1,40 +1,106 @@
-/* Overall App Container */
+/* CSS Variables */
+:root {
+  --primary-color: #4a3aff;
+  --background-color: #f5f6f8;
+  --text-color: #333;
+  --navbar-width: 240px;
+  --navbar-toggle-height: 3.5rem;
+  --padding-desktop: 2rem;
+  --padding-mobile: 1rem;
+  --padding-small: 1rem; /* Increased from 0.75rem */
+}
+
+/* App Container */
 .app {
   display: flex;
   min-height: 100vh;
-  background-color: #f5f6f8; /* Consistent with BrandDashboard */
+  background-color: var(--background-color);
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
+  color: var(--text-color);
+  overflow-y: auto; /* Ensure scrolling */
 }
 
 /* Main Content with Sidebar */
 .main-content {
   flex: 1;
-  margin-left: 240px; /* Match Navbar width */
-  padding: 2rem;
+  margin-left: var(--navbar-width);
+  padding: var(--padding-desktop);
   transition: margin-left 0.3s ease-in-out;
 }
 
 /* Main Content without Sidebar */
 .main-content-full {
   flex: 1;
-  padding: 2rem;
+  padding: var(--padding-desktop);
 }
 
-/* Ensure content doesn't overlap with toggle button on mobile */
+/* Loading and Error States */
+.loading,
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-align: center;
+  padding: var(--padding-mobile);
+}
+
+.error-message {
+  color: #d32f2f;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .main-content,
   .main-content-full {
     margin-left: 0;
-    padding: 1rem;
-    padding-top: 3.5rem; /* Space for Navbar toggle button */
+    padding: var(--padding-mobile);
+    padding-top: var(--navbar-toggle-height);
+    min-height: calc(100vh - var(--navbar-toggle-height));
+    overflow-y: auto; /* Smooth scrolling */
   }
 }
 
 @media (max-width: 480px) {
   .main-content,
   .main-content-full {
-    padding: 0.5rem;
-    padding-top: 3rem;
+    padding: var(--padding-small);
+    padding-top: var(--navbar-toggle-height);
+  }
+}
+
+/* iOS Safe Area Support */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    .main-content,
+    .main-content-full {
+      padding-top: calc(var(--navbar-toggle-height) + env(safe-area-inset-top));
+      min-height: calc(100vh - var(--navbar-toggle-height) - env(safe-area-inset-top));
+    }
+  }
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+  .app {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .main-content {
+    transition: none;
+  }
+}
+
+/* Touch Devices */
+@media (hover: none) {
+  .main-content,
+  .main-content-full {
+    -webkit-overflow-scrolling: touch;
   }
 }

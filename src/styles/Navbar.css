@@ -328,3 +328,23 @@
     left: 0.8rem;
   }
 }
+.navbar__item {
+  font-size: 16px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  touch-action: manipulation;
+}
+.navbar__item--active {
+  background: #f0f0ff;
+  color: #4a3aff;
+  font-weight: 500;
+}
+.navbar__icon {
+  font-size: 18px;
+}

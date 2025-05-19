@@ -1,248 +1,385 @@
-.create-campaign-container {
+/* Container */
+.campaign-form-container {
   width: 600px;
   max-width: 95%;
-  margin: 2rem auto;
-  margin-left: calc(240px + 2rem); /* Offset for the fixed sidebar */
+  margin: 2.5rem auto;
+  margin-left: calc(var(--navbar-width) + 2.5rem); /* Offset for fixed sidebar */
   background-color: #fff;
-  border: none;
-  border-radius: 12px; /* Match card radius */
-  padding: 1.5rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Match shadow */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 12px;
+  padding: var(--padding-desktop);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
   position: relative;
 }
 
-/* Header with title and close (X) button */
-.create-campaign-header {
+/* Header */
+.campaign-form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.create-campaign-header h2 {
-  font-size: 1.5rem;
+.campaign-form-header h2 {
+  font-size: 1.75rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-color);
+  margin: 0;
 }
 
-.close-modal-btn {
+.campaign-close-btn {
   border: none;
   background: none;
   font-size: 1.5rem;
-  cursor: pointer;
   color: #666;
-  padding: 0.5rem; /* Increase touch area */
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.campaign-close-btn:hover {
+  color: var(--primary-color);
+  background: var(--background-color);
+}
+
+.campaign-close-btn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Error Message */
-.error-message {
-  font-size: 0.85rem;
+.campaign-error {
+  font-size: 0.9rem;
   color: #ff4d4f;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: #fff1f0;
+  border-radius: 8px;
+  border-left: 4px solid #ff4d4f;
 }
 
-/* Form Layout */
-.create-campaign-form {
+/* Form */
+.campaign-form {
   display: flex;
   flex-direction: column;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
+.campaign-form-group {
+  margin-bottom: 2rem;
 }
 
-.form-label {
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 0.4rem;
+.campaign-form-label {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   font-weight: 500;
 }
 
-.form-input,
-.form-textarea {
+.campaign-form-input,
+.campaign-form-textarea {
   width: 100%;
   border: 1px solid #e8ecef;
   border-radius: 8px;
-  padding: 0.6rem;
-  font-size: 0.9rem;
-  touch-action: manipulation; /* Improve touch scrolling */
+  padding: 0.85rem;
+  font-size: 1rem;
+  touch-action: manipulation;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.campaign-form-input:focus,
+.campaign-form-textarea:focus {
   outline: none;
-  border-color: #4a3aff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 58, 255, 0.15);
 }
 
-.form-textarea {
+.campaign-form-input::placeholder,
+.campaign-form-textarea::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+.campaign-form-textarea {
   resize: vertical;
-  min-height: 80px; /* Ensure enough space on mobile */
+  min-height: 120px;
 }
 
 /* Budget Range */
-.budget-range {
+.campaign-budget-range {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.budget-input {
-  width: 100%;
-  max-width: 100px;
-  text-align: center;
-  border: 1px solid #e8ecef;
-  border-radius: 8px;
-  padding: 0.6rem;
-}
-
-.budget-input:focus {
-  outline: none;
-  border-color: #4a3aff;
-}
-
-.range-dash {
-  font-weight: bold;
-  color: #666;
-}
-
-/* Checkbox Group */
-.checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  cursor: pointer;
-  color: #333;
-  padding: 0.5rem; /* Increase touch area */
-}
-
-.checkbox-label input {
-  margin-right: 0.4rem;
-  width: 18px; /* Larger checkbox for touch */
-  height: 18px;
-}
-
-/* Date Range for Start/End dates */
-.date-range {
-  display: flex;
-  gap: 2rem;
-}
-
-.date-label {
-  display: block;
-  font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 0.3rem;
-}
-
-.date-input {
+.campaign-budget-input {
+  width: 100%;
+  max-width: 130px;
+  text-align: center;
   border: 1px solid #e8ecef;
   border-radius: 8px;
-  padding: 0.5rem;
+  padding: 0.85rem;
+  font-size: 1rem;
+}
+
+.campaign-budget-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 58, 255, 0.15);
+}
+
+.campaign-budget-dash {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Checkbox Group */
+.campaign-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.campaign-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-color);
+  padding: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.campaign-checkbox-label:hover {
+  background: var(--background-color);
+}
+
+.campaign-checkbox-label input {
+  margin-right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.campaign-checkbox-label input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Date Range */
+.campaign-date-range {
+  display: flex;
+  gap: 3rem;
+}
+
+.campaign-date-label {
+  display: block;
   font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.campaign-date-input {
+  border: 1px solid #e8ecef;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-size: 1rem;
   width: 100%;
 }
 
-.date-input:focus {
+.campaign-date-input:focus {
   outline: none;
-  border-color: #4a3aff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 58, 255, 0.15);
 }
 
-/* Button Row */
-.button-row {
+/* Form Actions */
+.campaign-form-actions {
   text-align: right;
 }
 
-.create-campaign-btn {
-  background-color: #4a3aff;
+.campaign-submit-btn {
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
-  padding: 0.7rem 1.2rem;
+  padding: 0.9rem 1.75rem;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
-  width: 100%; /* Full width on mobile */
+  width: 100%;
+  min-height: 52px;
+  transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
 }
 
-.create-campaign-btn:hover {
+.campaign-submit-btn:hover {
   background-color: #3a2bff;
+  transform: translateY(-1px);
+}
+
+.campaign-submit-btn:active {
+  transform: translateY(0);
+}
+
+.campaign-submit-btn:disabled {
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .create-campaign-container {
-    margin-left: 1rem; /* Remove sidebar offset */
-    margin-right: 1rem;
-    padding: 1rem; /* Reduce padding for mobile */
+  .campaign-form-container {
+    margin: calc(var(--navbar-toggle-height) + 1rem) 1rem 1rem;
+    padding: var(--padding-mobile);
+    max-width: 100%;
+    box-shadow: none;
+    background-color: var(--background-color);
+    border-radius: 8px;
   }
 
-  .create-campaign-header h2 {
-    font-size: 1.25rem; /* Smaller heading */
+  .campaign-form-header {
+    position: relative;
+    margin-bottom: 1.75rem;
   }
 
-  .form-group {
-    margin-bottom: 1rem; /* Reduce spacing */
+  .campaign-form-header h2 {
+    font-size: 1.5rem;
   }
 
-  .form-input,
-  .form-textarea {
-    padding: 0.5rem; /* Adjust padding */
-    font-size: 1rem; /* Larger font for readability */
+  .campaign-close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.25rem;
   }
 
-  .budget-range {
-    flex-direction: column;
-    gap: 0.5rem;
+  .campaign-form-group {
+    margin-bottom: 1.5rem;
   }
 
-  .budget-input {
-    max-width: 100%; /* Full width on mobile */
+  .campaign-form-label {
+    font-size: 1rem;
   }
 
-  .checkbox-group {
-    gap: 0.5rem; /* Tighter spacing */
+  .campaign-form-input,
+  .campaign-form-textarea,
+  .campaign-date-input {
+    padding: 0.9rem;
+    font-size: 1.1rem;
   }
 
-  .checkbox-label {
-    padding: 0.75rem; /* Larger touch area */
+  .campaign-form-input::placeholder,
+  .campaign-form-textarea::placeholder {
+    font-size: 1rem;
+    font-weight: 500;
   }
 
-  .date-range {
+  .campaign-error {
+    font-size: 0.9rem;
+  }
+
+  .campaign-budget-range {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .button-row {
-    text-align: center; /* Center button on mobile */
+  .campaign-budget-input {
+    max-width: 100%;
+  }
+
+  .campaign-checkbox-group {
+    gap: 1rem;
+  }
+
+  .campaign-checkbox-label {
+    padding: 1.25rem;
+    width: 100%;
+  }
+
+  .campaign-date-range {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .campaign-form-actions {
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .create-campaign-container {
-    margin: 1rem; /* Minimal margins */
-    padding: 0.75rem;
+  .campaign-form-container {
+    margin: calc(var(--navbar-toggle-height) + 0.75rem) var(--padding-small) var(--padding-small);
+    padding: var(--padding-small);
+    border-radius: 8px;
   }
 
-  .create-campaign-header {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
+  .campaign-form-header h2 {
+    font-size: 1.25rem;
   }
 
-  .close-modal-btn {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+  .campaign-close-btn {
+    padding: 1rem;
+  }
+
+  .campaign-form-label {
+    font-size: 0.95rem;
+  }
+
+  .campaign-form-input,
+  .campaign-form-textarea,
+  .campaign-date-input {
+    padding: 0.8rem;
+  }
+
+  .campaign-submit-btn {
+    padding: 0.8rem 1.5rem;
+    min-height: 48px;
+  }
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    .campaign-form-container {
+      margin-top: calc(var(--navbar-toggle-height) + env(safe-area-inset-top) + 1rem);
+    }
+  }
+  @media (max-width: 480px) {
+    .campaign-form-container {
+      margin-top: calc(var(--navbar-toggle-height) + env(safe-area-inset-top) + 0.75rem);
+    }
+  }
+}
+
+@media (prefers-contrast: high) {
+  .campaign-form-container {
+    background-color: #fff;
+    color: #000;
+  }
+  .campaign-submit-btn {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-close-btn,
+  .campaign-submit-btn,
+  .campaign-form-input,
+  .campaign-form-textarea,
+  .campaign-date-input,
+  .campaign-checkbox-label {
+    transition: none;
+  }
+}
+
+@media (hover: none) {
+  .campaign-form-container {
+    -webkit-overflow-scrolling: touch;
   }
 }
